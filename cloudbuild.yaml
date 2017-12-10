@@ -1,0 +1,8 @@
+steps:
+  - name: "gcr.io/cloud-builders/go"
+    args: ["install", "github.com/ttretau/hellogo"]
+    env: ["PROJECT_ROOT=github.com/ttretau/hellogo"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/gcproject-186921/hellogo:$REVISION_ID", "-f", "Dockerfile", "."]
+images:
+  - "gcr.io/gcproject-186921/hellogo:$REVISION_ID"
